@@ -1,5 +1,6 @@
 const { SendResponse } = require("../helpers/helper");
 
+
 const courses = [
   {
     id: 1,
@@ -94,10 +95,18 @@ const CourseController = {
     }
     res.send(obj);
   },
-  edit: () => {},
-  get: (req, res) => {
-    res.send(courses);
-  },
+  edit: () => { },
+  get: async(req, res) = (
+    try{
+    let { pageNo, pageSize } = req.query;
+let skipCount = (pageNo - 1) * pageSize;
+    let result = await courseModel.find ().limit(pageSize).skip()
+    }
+    
+  ),
+  
+      
+
   getById: (req, res) => {
     let id = req.params.id;
 
